@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/settings"
+        android:title="Nastavitve"
+        android:icon="@drawable/ic_settings"/>
+    <item
+        android:id="@+id/search"
+        android:title="Iskanje"
+        android:icon="@drawable/ic_search"/>
+    <item
+        android:id="@+id/history"
+        android:title="Zgodovina"
+        android:icon="@drawable/ic_list"/>
+</menu>

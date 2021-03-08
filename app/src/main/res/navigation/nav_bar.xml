@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bar"
+    app:startDestination="@id/search">
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.alergenko.controllers.Settings"
+        android:label="settings"
+        tools:layout="@layout/settings" />
+    <fragment
+        android:id="@+id/history"
+        android:name="com.example.alergenko.controllers.History"
+        android:label="history"
+        tools:layout="@layout/history" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.alergenko.controllers.Search"
+        android:label="main_activity"
+        tools:layout="@layout/search" />
+</navigation>

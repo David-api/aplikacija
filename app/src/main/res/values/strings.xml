@@ -1,0 +1,54 @@
+<resources>
+    <!--Placeholderji za elemente-->
+    <string name="placeholder_small">small placeholder for elements</string>
+
+    <!--Strings-->
+    <string name="login_prijava">Prijava v račun</string>
+    <string name="login_username">Uporabniško ime</string>
+    <string name="login_geslo">Geslo</string>
+    <string name="login_pozabljenog">Ste pozabili geslo?</string>
+    <string name="login_zapomni">Zapomni si prijavo</string>
+    <string name="login_prijava1">Prijava</string>
+    <string name="login_nimateracuna">Nimate še računa?</string>
+    <string name="login_registracija">Registracija</string>
+
+    <string name="register_1_registracija">Registracija</string>
+    <string name="register_1_ime">Ime</string>
+    <string name="register_1_priimek">Priimek</string>
+    <string name="register_1_mail">E-pošta</string>
+    <string name="register_1_username">Uporabniško ime</string>
+    <string name="register_1_telefon">Telefonska številka</string>
+    <string name="register_1_geslo">Geslo</string>
+    <string name="register_1_ponovnog">Ponovno geslo</string>
+    <string name="register_1_nazaj">Nazaj</string>
+    <string name="register_1_naprej">Naprej</string>
+
+    <string name="register_2_registracija">Registracija</string>
+    <string name="register_2_navodilo">Izberite alergene na ktere ste alergični:</string>
+    <string name="register_2_jajca">Jajca</string>
+    <string name="register_2_orescki">Oreščki</string>
+    <string name="register_2_gluten">Gluten</string>
+    <string name="register_2_mleko">Mleko</string>
+    <string name="register_2_soja">Soja</string>
+    <string name="register_2_arasidi">Arasidi</string>
+    <string name="register_2_zelena">Zelena</string>
+    <string name="register_2_ribe">Ribe</string>
+    <string name="register_2_raki">Raki</string>
+    <string name="register_2_gorcicno_seme">Gorčično seme</string>
+    <string name="register_2_sezam">Sezam</string>
+    <string name="register_2_zveplo">Žveplo (SO2)</string>
+    <string name="register_2_volcji_bob">Volčji bob</string>
+    <string name="register_2_mehkuzci">Mehkužci</string>
+    <string name="register_2_nazaj">Nazaj</string>
+    <string name="register_2_naprej">Naprej</string>
+
+    <string name="product_info_zapri">ZAPRI OKNO</string>
+
+    <string name="history_zgodovina">Zgodovina</string>
+    <string name="history_iskanje">Iskanje izdelkov</string>
+
+    <string name="settings_nastavitve">Nastavitve</string>
+    <string name="settings_osnovni_podatki">Osnovni podatki</string>
+    <string name="settings_podatki_o_alergenih">Podatki o alergenih</string>
+    <string name="settings_razsirjen">Razširjen pogled</string>
+</resources>

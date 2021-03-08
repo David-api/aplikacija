@@ -1,0 +1,4 @@
+include ':jndi-1.2.1'
+include ':ojdbc6'
+include ':app'
+rootProject.name = "Alergenko"

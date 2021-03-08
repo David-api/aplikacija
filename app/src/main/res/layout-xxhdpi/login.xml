@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_background">
+
+    <TableLayout
+        android:layout_width="154dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/txtDontHaveAcc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/login_nimateracuna"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtRegister"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:onClick="openRegister1Activity"
+                android:text="@string/login_registracija"
+                android:textColor="@color/primaryGreen"
+                android:textSize="18sp"
+                tools:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/login_holder"
+        android:layout_width="351dp"
+        android:layout_height="366dp"
+        android:background="@drawable/bg_placeholder_small"
+        android:clipChildren="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:id="@+id/txtLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/amiko"
+                android:text="@string/login_prijava"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtInfo"
+                android:layout_width="262dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="40dp"
+                android:textColor="@color/red"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/txtInUsername"
+                android:layout_width="350dp"
+                android:layout_height="57dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/login_username"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minWidth="250dp"
+                tools:textColorHint="@color/lightGray"
+                tools:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/psswdInPassword1"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/login_geslo"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:minWidth="250dp"
+                tools:textColorHint="@color/lightGray"
+                tools:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/txtForgottPsswd"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="53dp"
+                android:text="@string/login_pozabljenog"
+                android:textColor="@color/primaryGreen"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <CheckBox
+                android:id="@+id/cbxStayLogIn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="46dp"
+                android:text="@string/login_zapomni" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnLogIn"
+                android:layout_width="266dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/button_green"
+                android:minWidth="160dp"
+                android:onClick="login"
+                android:text="@string/login_prijava1"
+                android:textColor="@color/white" />
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

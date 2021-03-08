@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/txtRegister"
                 android:layout_width="233dp"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/amiko"
                 android:text="@string/register_1_registracija"
@@ -40,8 +40,8 @@
 
             <TextView
                 android:id="@+id/txtVException"
-                android:layout_width="267dp"
-                android:layout_height="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:textColor="@color/red"
@@ -51,7 +51,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/txtInName"
@@ -70,7 +70,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/txtInSurname"
@@ -89,7 +89,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/txtInEmail"
@@ -108,7 +108,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/txtInUsername"
@@ -147,7 +147,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/psswdInPsswd"
@@ -166,7 +166,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/psswdInPsswd2"
@@ -185,7 +185,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

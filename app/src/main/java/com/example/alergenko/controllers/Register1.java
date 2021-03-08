@@ -8,9 +8,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alergenko.R;
+import com.example.alergenko.connection.DBConnection;
 import com.example.alergenko.entities.User;
 import com.example.alergenko.exceptions.EmptyInputException;
+import com.example.alergenko.exceptions.UsernameAlreadyExsistsException;
+import com.example.alergenko.exceptions.WeakPasswordExeption;
 import com.example.alergenko.exceptions.WrongUsernameOrPasswordException;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Register1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +78,50 @@ public class Register1 extends AppCompatActivity {
                 throw new EmptyInputException("Geslo manjka!");
             if(psswd2.equals(""))
                 throw new EmptyInputException("Ponovno geslo manjka!");
-
         } catch (EmptyInputException e) {
             exceptionInfo.setText(e.getMessage());
             return  false;
         }
 
-        //TODO: dodaj da preveri geslo (vsej 8 črk, ena velika začetnica, en poseben znak)
-        //TODO: dodaj da preveri da uporabniško ime ne obstaj v bazi
-
         //preveri da se geslo in ponovno geslo ujemata
         try {
             if (!psswd.equals(psswd2))
                 throw new WrongUsernameOrPasswordException("Gesli se ne ujemata!");
-
         } catch (WrongUsernameOrPasswordException e){
+            exceptionInfo.setText(e.getMessage());
+            return false;
+        }
+
+        //preveri geslo da je dovolj močno (vsaj 8 črk, ena velika začetnica in en poseben znak)
+        try {
+            if(!psswd.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}"))
+                throw new WeakPasswordExeption("Geslo mora vsebovati eno številko, eno veliko črko in biti dolgo 8 znakov!");
+        } catch (WeakPasswordExeption e){
+            exceptionInfo.setText(e.getMessage());
+            return  false;
+        }
+
+        //preveri da uporabniško ime ne obstaja v bazi
+        try{
+            String usernameDb = "";
+
+            Connection con = DBConnection.getConnection();
+            Statement stmt = con.createStatement();
+            String query = "select u.username\n" +
+                        "from apl_user u\n" +
+                        "where u.username like '" + username + "'";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next())
+                usernameDb = rs.getString("username");
+
+            if(username.equals(usernameDb))
+                throw new UsernameAlreadyExsistsException("Uporabniško ime že obstaja!");
+
+        } catch (UsernameAlreadyExsistsException e){
+            exceptionInfo.setText(e.getMessage());
+            return false;
+        } catch (SQLException e){
             exceptionInfo.setText(e.getMessage());
             return false;
         }

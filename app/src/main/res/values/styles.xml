@@ -8,4 +8,8 @@
         <item name="colorControlActivated">@color/primaryGreen</item>
         <item name="android:switchTextAppearance">@color/primaryGreen</item>
     </style>
+
+    <style name="SwitchTextAppearance" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textColor">@color/primaryGreen</item>
+    </style>
 </resources>

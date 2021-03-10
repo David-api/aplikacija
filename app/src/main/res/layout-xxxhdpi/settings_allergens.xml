@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_background">
+
+    <TableLayout
+        android:layout_width="338dp"
+        android:layout_height="641dp"
+        android:background="@drawable/bg_placeholder_big"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/txtRegister"
+                tools:layout_gravity="center"
+                android:layout_width="338dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/amiko"
+                android:text="@string/settings_allergens_alergeni"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_navodilo"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swJajca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_jajca"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme"
+                app:switchTextAppearance="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swOrescki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_orescki"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGluten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_gluten"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swMleko"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_mleko"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swSoja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_soja"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swArasidi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_arasidi"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swZelena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_zelena"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swRibe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_ribe"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swRaki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_raki"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGorcicnoSeme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_gorcicno_seme"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swSezam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_sezam"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swZveplo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_zveplo"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swVolcjiBob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_volcji_bob"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swMehkuzci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/register_2_mehkuzci"
+                android:textColor="@color/lightGray"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/SwitchTheme" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:width="70dp"
+                    android:background="@drawable/buttom_white"
+                    android:text="@string/settings_allergens_preklici"
+                    android:textColor="@color/primaryGreen" />
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_green"
+                    android:text="@string/settings_allergens_potrdi"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

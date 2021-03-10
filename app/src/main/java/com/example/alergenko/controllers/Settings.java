@@ -1,5 +1,6 @@
 package com.example.alergenko.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -62,5 +63,13 @@ public class Settings extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.settings, container, false);
+    }
+
+    public void openSettingsAllergens(View v){
+        //TODO: dodaj da odpre settingsAllergens aktivnost
+    }
+
+    public void openSettingsData(View v){
+        //TODO: dodaj da odpre settingsData aktivnost
     }
 }

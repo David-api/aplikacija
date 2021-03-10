@@ -51,4 +51,13 @@
     <string name="settings_osnovni_podatki">Osnovni podatki</string>
     <string name="settings_podatki_o_alergenih">Podatki o alergenih</string>
     <string name="settings_razsirjen">Razširjen pogled</string>
+
+    <string name="settings_allergens_alergeni">Alergeni</string>
+    <string name="settings_allergens_potrdi">Potrdi</string>
+    <string name="settings_allergens_preklici">Prekliči</string>
+
+    <string name="settings_data_podatki">Podatki o uporabniku</string>
+    <string name="settings_data_potrdi">Potrdi</string>
+    <string name="settings_data_preklici">Prekliči</string>
+
 </resources>

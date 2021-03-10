@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_background">
+
+    <TableLayout
+        android:layout_width="335dp"
+        android:layout_height="617dp"
+        android:background="@drawable/bg_placeholder_big"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/txtRegister"
+                android:layout_width="338dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/amiko"
+                android:text="@string/settings_data_podatki"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtVException"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/red"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp">
+
+            <EditText
+                android:id="@+id/txtInName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_ime"
+                android:inputType="textPersonName"
+                android:textColor="@color/lightGray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/txtInSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_priimek"
+                android:inputType="textPersonName"
+                android:textColor="@color/lightGray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/txtInEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_mail"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/lightGray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/txtInUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_username"
+                android:inputType="textPersonName"
+                android:textColor="@color/lightGray" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/txtInPhoneNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_telefon"
+                android:inputType="phone"
+                android:textColor="@color/lightGray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/psswdInPsswd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_geslo"
+                android:inputType="textPassword"
+                android:textColor="@color/lightGray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/psswdInPsswd2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/register_1_ponovnog"
+                android:inputType="textPassword"
+                android:textColor="@color/lightGray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttom_white"
+                    android:text="@string/settings_data_preklici"
+                    android:textColor="@color/primaryGreen" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_green"
+                    android:text="@string/settings_data_potrdi"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

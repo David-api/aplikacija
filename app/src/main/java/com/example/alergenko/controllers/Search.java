@@ -1,5 +1,6 @@
 package com.example.alergenko.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.alergenko.R;
+import com.example.alergenko.entities.Product;
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -64,6 +68,11 @@ public class Search extends Fragment implements View.OnClickListener{
 
 
     private CompoundBarcodeView barcodeView;
+    /*
+    ListView lv;
+    ArrayList<Product> arr;
+    ProductListAdapter<Product> adapter;
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,20 +88,36 @@ public class Search extends Fragment implements View.OnClickListener{
         barcodeView.setStatusText("Postavite črtno kodo v okvir, da jo skenirate.");
         barcodeView.decodeContinuous(callback);
 
+
+        /*
+        lv = v.findViewById(R.id.scanned_item);
+        arr = new ArrayList<Product>();
+        arr.add(new Product(1, "neki", "neki"));
+        adapter = new ProductListAdapter<Product>(getActivity(), R.layout.scanned_item, arr);
+        lv.setAdapter(adapter);
+         */
+
         return v;
     }
+
+
 
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (result.getText() != null) {
-                barcodeView.setStatusText(result.getText());
+                Intent i = new Intent(getActivity(), ProductInfo.class);
+                String barcode = result.getText();
+                i.putExtra("BARCODE", barcode);
+                startActivity(i);
             }
         }
+
 
         @Override
         public void possibleResultPoints(List<ResultPoint> resultPoints) {}
     };
+
 
 
     @Override

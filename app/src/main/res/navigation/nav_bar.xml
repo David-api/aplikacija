@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_bar"
-    app:startDestination="@id/search">
+    app:startDestination="@id/scanned_item">
     <fragment
         android:id="@+id/settings"
         android:name="com.example.alergenko.controllers.Settings"
@@ -15,7 +15,7 @@
         android:label="history"
         tools:layout="@layout/history" />
     <fragment
-        android:id="@+id/search"
+        android:id="@+id/scanned_item"
         android:name="com.example.alergenko.controllers.Search"
         android:label="main_activity"
         tools:layout="@layout/search" />

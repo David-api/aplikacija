@@ -17,7 +17,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:zxing_framing_rect_width="350dp"
-        app:zxing_framing_rect_height="200dp" />
+        app:zxing_framing_rect_height="200dp"
+        app:zxing_framing_rect_width="350dp">
+
+    </com.journeyapps.barcodescanner.CompoundBarcodeView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,13 +23,13 @@
             android:layout_marginEnd="20dp">
 
             <TextView
-                android:id="@+id/txtProductName"
+                android:id="@+id/txtvProductName"
                 android:layout_width="258dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="IME IZDELKA"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -42,7 +42,7 @@
             <ImageView
                 android:id="@+id/imgvProductImage"
                 android:layout_width="155dp"
-                android:layout_height="215dp"
+                android:layout_height="170dp"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
         </TableRow>
 
@@ -55,7 +55,7 @@
             <TextView
                 android:id="@+id/txtvAllergenes"
                 android:layout_width="155dp"
-                android:layout_height="215dp"
+                android:layout_height="wrap_content"
                 android:text="Alergeni"
                 android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
@@ -66,12 +66,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txtvIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sestavine"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnClose"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/button_green"
                 android:text="@string/product_info_zapri"
                 android:textColor="@color/white"

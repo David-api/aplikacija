@@ -22,10 +22,9 @@
 
             <TextView
                 android:id="@+id/txtRegister"
-                tools:layout_gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="233dp"
                 android:layout_height="30dp"
-                android:layout_gravity="center"
                 android:fontFamily="@font/amiko"
                 android:text="@string/settings_data_podatki"
                 android:textColor="#000000"
@@ -192,7 +191,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"

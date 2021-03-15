@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.alergenko.R;
 
@@ -58,18 +59,49 @@ public class Settings extends Fragment {
         }
     }
 
+    //vhodi
+    protected TextView settingsData;
+    protected TextView settingsAllergens;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.settings, container, false);
+        // Inflate the layout for this fragment (kreiranje pogleda)
+        View v = inflater.inflate(R.layout.settings, container, false);
+
+        //dodajanje poslušalcev ob kliku na vhode / gumbe
+        TextView settingsData = v.findViewById(R.id.txtData);
+        View.OnClickListener listenerData = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettingsDataActivity();
+            }
+        };
+        settingsData.setOnClickListener(listenerData);
+
+        TextView settingsAllergens = v.findViewById(R.id.txtAllergenes);
+        View.OnClickListener listenerAllergens = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettingsAllergensActivity();
+            }
+        };
+        settingsAllergens.setOnClickListener(listenerAllergens);
+
+        return v;
     }
 
-    public void openSettingsAllergens(View v){
-        //TODO: dodaj da odpre settingsAllergens aktivnost
+    public void openSettingsAllergensActivity(){
+        //odpre settingsAllergens aktivnost
+        Intent intent = new Intent(getActivity(), SettingsAllergens.class);
+        ((MainActivity) getActivity()).startActivity(intent);
     }
 
-    public void openSettingsData(View v){
-        //TODO: dodaj da odpre settingsData aktivnost
+    public void openSettingsDataActivity(){
+        //odpre settingsData aktivnost
+        Intent intent = new Intent(getActivity(), SettingsData.class);
+        ((MainActivity) getActivity()).startActivity(intent);
     }
+
+
 }

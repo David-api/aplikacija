@@ -6,7 +6,7 @@
         android:title="Nastavitve"
         android:icon="@drawable/ic_settings"/>
     <item
-        android:id="@+id/search"
+        android:id="@+id/scanned_item"
         android:title="Iskanje"
         android:icon="@drawable/ic_search"/>
     <item

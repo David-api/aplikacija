@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.example.alergenko.R;
 import com.example.alergenko.connection.DBConnection;
 import com.example.alergenko.entities.Allergen;
+import com.example.alergenko.entities.Allergens;
 import com.example.alergenko.entities.User;
 import com.example.alergenko.exceptions.UsernameAlreadyExsistsException;
 
@@ -34,24 +35,6 @@ public class Register2 extends AppCompatActivity {
 
     public void register2(View v){
 
-        //deklaracija in inicializacija vseh možnih alergenov
-        Allergen []allergens = {
-                new Allergen(70, "jajca"),
-                new Allergen(71, "orescki"),
-                new Allergen(72, "gluten"),
-                new Allergen(73, "mleko"),
-                new Allergen(74, "soja"),
-                new Allergen(75, "arasidi"),
-                new Allergen(76, "zelena"),
-                new Allergen(77, "ribe"),
-                new Allergen(78, "raki"),
-                new Allergen(79, "gorcicno seme"),
-                new Allergen(80, "sezam"),
-                new Allergen(81, "so2"),
-                new Allergen(82, "volcji bob"),
-                new Allergen(83, "mehkuzci"),
-        };
-
         SwitchCompat swJajca = findViewById(R.id.swJajca);
         SwitchCompat swOrescki = findViewById(R.id.swOrescki);
         SwitchCompat swGluten = findViewById(R.id.swGluten);
@@ -68,35 +51,35 @@ public class Register2 extends AppCompatActivity {
         SwitchCompat swMehkuzci = findViewById(R.id.swMehkuzci);
 
         //zbiranje alergenov, ki ji je uporabnik izbral
-        ArrayList<Allergen> allergensRegister = new ArrayList<Allergen>();
+        ArrayList<Allergens> allergensRegister = new ArrayList<Allergens>();
         if(swJajca.isChecked())
-            allergensRegister.add(allergens[0]);
+            allergensRegister.add(Allergens.JAJCA);
         if(swOrescki.isChecked())
-            allergensRegister.add(allergens[1]);
+            allergensRegister.add(Allergens.ORESCKI);
         if(swGluten.isChecked())
-            allergensRegister.add(allergens[2]);
+            allergensRegister.add(Allergens.GLUTEN);
         if(swMleko.isChecked())
-            allergensRegister.add(allergens[3]);
+            allergensRegister.add(Allergens.MLEKO);
         if(swSoja.isChecked())
-            allergensRegister.add(allergens[4]);
+            allergensRegister.add(Allergens.SOJA);
         if(swArasidi.isChecked())
-            allergensRegister.add(allergens[5]);
+            allergensRegister.add(Allergens.ARASIDI);
         if(swZelena.isChecked())
-            allergensRegister.add(allergens[6]);
+            allergensRegister.add(Allergens.ZELENA);
         if(swRibe.isChecked())
-            allergensRegister.add(allergens[7]);
+            allergensRegister.add(Allergens.RIBE);
         if(swRaki.isChecked())
-            allergensRegister.add(allergens[8]);
+            allergensRegister.add(Allergens.RAKI);
         if(swGorcicnoSeme.isChecked())
-            allergensRegister.add(allergens[9]);
+            allergensRegister.add(Allergens.GORCICNO_SEME);
         if(swSezam.isChecked())
-            allergensRegister.add(allergens[10]);
+            allergensRegister.add(Allergens.SEZAM);
         if(swZveplo.isChecked())
-            allergensRegister.add(allergens[11]);
+            allergensRegister.add(Allergens.ZVEPLO);
         if(swVolcjiBob.isChecked())
-            allergensRegister.add(allergens[12]);
+            allergensRegister.add(Allergens.VOLCJI_BOB);
         if(swMehkuzci.isChecked())
-            allergensRegister.add(allergens[13]);
+            allergensRegister.add(Allergens.MEHKUZCI);
 
 
         //dodajanje uporabnika v podatkovno bazo in povezava z alergeni na katere je alergicen

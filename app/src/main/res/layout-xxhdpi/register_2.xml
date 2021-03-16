@@ -67,7 +67,8 @@
                 android:textColor="@color/lightGray"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:theme="@style/SwitchTheme" />
+                android:theme="@style/SwitchTheme"
+                app:switchTextAppearance="@style/TextAppearance.AppCompat.Medium" />
         </TableRow>
 
         <TableRow

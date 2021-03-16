@@ -6,8 +6,8 @@
     android:background="@drawable/bg_background">
 
     <TableLayout
-        android:layout_width="335dp"
-        android:layout_height="617dp"
+        android:layout_width="338dp"
+        android:layout_height="641dp"
         android:background="@drawable/bg_placeholder_big"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/txtRegister"
                 android:layout_width="338dp"
-                android:layout_height="33dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/amiko"
                 android:text="@string/settings_data_podatki"
@@ -39,7 +39,7 @@
             <TextView
                 android:id="@+id/txtVException"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:textColor="@color/red"
@@ -49,20 +49,17 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/txtInName"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtvName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_ime"
-                android:inputType="textPersonName"
-                android:textColor="@color/lightGray" />
+                android:text="Ime:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
@@ -70,18 +67,15 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/txtInSurname"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtvSurname"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_priimek"
-                android:inputType="textPersonName"
-                android:textColor="@color/lightGray" />
+                android:text="Priimek"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
@@ -89,18 +83,15 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/txtInEmail"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtvGmail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_mail"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/lightGray" />
+                android:text="Epošta:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
@@ -108,19 +99,15 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/txtInUsername"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtvUsername"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_username"
-                android:inputType="textPersonName"
-                android:textColor="@color/lightGray" />
-
+                android:text="Uporabniško ime:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
@@ -128,62 +115,28 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/txtInPhoneNum"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtvPhoneNumber"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_phone"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_telefon"
-                android:inputType="phone"
-                android:textColor="@color/lightGray" />
+                android:text="Telefonska številka:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/psswdInPsswd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_geslo"
-                android:inputType="textPassword"
-                android:textColor="@color/lightGray" />
-        </TableRow>
+            android:layout_marginTop="20dp"
+            android:layout_weight="1" />
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
-
-            <EditText
-                android:id="@+id/psswdInPsswd2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/register_1_ponovnog"
-                android:inputType="textPassword"
-                android:textColor="@color/lightGray" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -202,7 +155,7 @@
                     android:textColor="@color/primaryGreen" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnConfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -211,6 +164,7 @@
                     android:background="@drawable/button_green"
                     android:text="@string/settings_data_potrdi"
                     android:textColor="@color/white" />
+
             </LinearLayout>
         </TableRow>
     </TableLayout>

@@ -30,6 +30,7 @@
         <activity android:name=".controllers.Register2" ></activity>
         <activity android:name=".controllers.SettingsAllergens" ></activity>
         <activity android:name=".controllers.SettingsData" ></activity>
+        <activity android:name=".controllers.SettingsChangeData" ></activity>
         <activity android:name=".controllers.ProductInfo" ></activity>
 
 

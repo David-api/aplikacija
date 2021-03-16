@@ -173,7 +173,6 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_green"
                 android:minWidth="160dp"
-                android:onClick="login"
                 android:text="@string/login_prijava1"
                 android:textColor="@color/white" />
         </TableRow>

@@ -11,16 +11,12 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.alergenko.R;
 import com.example.alergenko.connection.DBConnection;
-import com.example.alergenko.entities.Allergen;
 import com.example.alergenko.entities.Allergens;
 import com.example.alergenko.entities.User;
-import com.example.alergenko.exceptions.UsernameAlreadyExsistsException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Register2 extends AppCompatActivity {
@@ -65,7 +61,7 @@ public class Register2 extends AppCompatActivity {
         if(swArasidi.isChecked())
             allergensRegister.add(Allergens.ARASIDI);
         if(swZelena.isChecked())
-            allergensRegister.add(Allergens.ZELENA);
+            allergensRegister.add(Allergens.ZELENE);
         if(swRibe.isChecked())
             allergensRegister.add(Allergens.RIBE);
         if(swRaki.isChecked())
@@ -113,8 +109,6 @@ public class Register2 extends AppCompatActivity {
             e.printStackTrace();
             unsuccessRegister(e.getMessage());
         }
-
-
     }
 
     public void successRegister(){
@@ -136,7 +130,7 @@ public class Register2 extends AppCompatActivity {
 
     public void unsuccessRegister(String message){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Registracija neuspešna!\n Razlog: " + message);
+        builder1.setMessage("Registracija neuspešna!\nRazlog: " + message);
 
         builder1.setPositiveButton(
                 "Poizkusite ponovno",

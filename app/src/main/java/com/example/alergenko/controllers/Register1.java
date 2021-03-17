@@ -24,6 +24,8 @@ public class Register1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_1);
+
+        //TODO: dodaj on click listenerje
     }
 
     public void openLoginActivity(View v){
@@ -31,6 +33,8 @@ public class Register1 extends AppCompatActivity {
     }
 
     public void register1(View v){
+        //TODO: dodaj da preveri dolžino podatkov
+
         //pridobivanje podatkov iz vnosnih polj
         TextView txtInName = findViewById(R.id.txtInName);
         TextView txtInSurname = findViewById(R.id.txtInSurname);

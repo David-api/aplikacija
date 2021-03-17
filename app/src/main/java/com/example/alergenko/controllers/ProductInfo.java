@@ -3,7 +3,6 @@ package com.example.alergenko.controllers;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,14 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alergenko.R;
 import com.example.alergenko.connection.DBConnection;
-import com.example.alergenko.entities.Allergen;
-import com.example.alergenko.entities.Product;
-import com.example.alergenko.entities.User;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -56,7 +51,7 @@ public class ProductInfo extends AppCompatActivity {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
 
-            //iskanje izdelka po barkodah
+            //iskanje izdelka, alergenov in slike po barkodah
             String query = "select b.barcode, br.name as znamka, p.name as izdelek, p.pictureUrl as url, a.name as alergen\n" +
                     "from apl_allergen a\n" +
                     "    right join  apl_alr_prdct ap\n" +
@@ -70,7 +65,8 @@ public class ProductInfo extends AppCompatActivity {
                     "where b.barcode = '" + barcode + "'";
             ResultSet rs = stmt.executeQuery(query);
 
-            //TODO: popravi da ce ni alergenov daizpise "ni alergenov"
+            //TODO: dodaj da pobere sliko iz baze in ne iz interneta
+            //shranjevanje podatkov iz baze v spremenljivke
             while (rs.next()) {
                 productName = rs.getString("izdelek");
                 picture = rs.getString("url");
@@ -94,6 +90,7 @@ public class ProductInfo extends AppCompatActivity {
             Log.e("ProductInfo Exception", e.toString());
         }
 
+        //prikaz podatkov v aplikaciji
         txtvAllergenes.setText(allergens.substring(0, allergens.length() - 2));
         txtvProductName.setText(productName);
         imgvProductImage.setImageBitmap(getBitmapFromURL(picture));

@@ -2,19 +2,19 @@ package com.example.alergenko.entities;
 
 public enum Allergens {
     JAJCA(70, "jajca"),
-    ORESCKI(70, "oreščki"),
-    GLUTEN(70, "gluten"),
-    MLEKO(70, "mleko"),
-    SOJA(70, "soja"),
-    ARASIDI(70, "arasidi"),
-    ZELENA(70, "zelena"),
-    RIBE(70, "ribe"),
-    RAKI(70, "raki"),
-    GORCICNO_SEME(70, "gorčično seme"),
-    SEZAM(70, "sezam"),
-    ZVEPLO(70, "žveplo (SO2)"),
-    VOLCJI_BOB(70, "volčji bob"),
-    MEHKUZCI(70, "mehkužci");
+    ORESCKI(71, "oreščki"),
+    GLUTEN(72, "gluten"),
+    MLEKO(73, "mleko"),
+    SOJA(74, "soja"),
+    ARASIDI(75, "arasidi"),
+    ZELENE(76, "zelena"),
+    RIBE(77, "ribe"),
+    RAKI(78, "raki"),
+    GORCICNO_SEME(79, "gorčično seme"),
+    SEZAM(80, "sezam"),
+    ZVEPLO(81, "žveplo (SO2)"),
+    VOLCJI_BOB(82, "volčji bob"),
+    MEHKUZCI(83, "mehkužci");
 
 
     public int id;

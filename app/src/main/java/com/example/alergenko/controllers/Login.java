@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.alergenko.R;
 
 import com.example.alergenko.connection.DBConnection;
-import com.example.alergenko.entities.Allergen;
+import com.example.alergenko.entities.Allergens;
 import com.example.alergenko.exceptions.EmptyInputException;
 import com.example.alergenko.exceptions.WrongUsernameOrPasswordException;
 import com.example.alergenko.entities.User;
@@ -109,14 +109,16 @@ public class Login extends AppCompatActivity {
             rs = stmt.executeQuery(query);
 
             while (rs.next())
-                User.allergens.add(new Allergen(rs.getInt("allergen_id"), rs.getString("name")));
+                User.allergens.add(Allergens.valueOf(rs.getString("name").toUpperCase().replace(' ', '_').trim()));
 
             con.close();
             stmt.close();
             rs.close();
         }  catch (SQLException e){
+            Log.e("error", e.toString());
             exceptionInfo.setText("Napaka pri pridobivanju podatkov iz podatkovne baze!");
         } catch (Exception e){
+            Log.e("error", e.toString());
             exceptionInfo.setText(e.getMessage());
         }
 

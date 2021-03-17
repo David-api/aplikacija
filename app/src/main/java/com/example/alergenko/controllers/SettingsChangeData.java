@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.alergenko.R;
 import com.example.alergenko.connection.DBConnection;
 import com.example.alergenko.entities.User;
+import com.example.alergenko.exceptions.InputTooShortException;
 import com.example.alergenko.exceptions.UsernameAlreadyExsistsException;
 
 import java.sql.Connection;
@@ -44,6 +45,7 @@ public class SettingsChangeData extends AppCompatActivity {
         txtInPhoneNum.setText(User.phoneNumber);
 
 
+        //ob kliku na gumb se izvede sprememba podatkov v podatkovni bazi
         Button btnChange = findViewById(R.id.btnConfirm);
         View.OnClickListener listenerChange = new View.OnClickListener() {
             @Override
@@ -81,62 +83,113 @@ public class SettingsChangeData extends AppCompatActivity {
         String username = (txtInUsername.getText().toString() != null) ? txtInUsername.getText().toString() : "";
         String phoneNum = (txtInPhoneNum.getText().toString() != null) ? txtInPhoneNum.getText().toString() : "";
 
-        //TODO: dodaj da preveri vnosna polja
+        //preveri da so vnosi pravilni (da niso prekratki)
+        boolean nameLength = true;
+        boolean surnameLength = true;
+        boolean emailLength = true;
+        boolean usernameLength = true;
+        boolean phoneNumLength = true;
+        try{
+            //preveri da je dolzina imena vecja ali enaka 2
+            if(name.length() < 2){
+                nameLength = false;
+                throw new InputTooShortException("Ime je prekratko!");
+            }
 
+            //preveri da je dolzina priimka vecja ali enaka 3
+            if(surname.length() < 3){
+                surnameLength = false;
+                throw new InputTooShortException("Priimek je prekratek!");
+            }
+
+            //preveri da je dolzina emaila vecja ali enaka 8
+            if(email.length() < 8){
+                emailLength = false;
+                throw new InputTooShortException("Email je prekratek!");
+            }
+
+            //preveri da je dolzina uporabniskega imena vecja ali enaka 3
+            if(username.length() < 3){
+                usernameLength = false;
+                throw new InputTooShortException("Uporabniško ime je prekratko!");
+            }
+
+            //preveri da je dolzina imena vecja ali enaka 9
+            if(phoneNum.length() < 9){
+                phoneNumLength = false;
+                throw new InputTooShortException("Telefonska številka ni prava!");
+            }
+
+            //posodobi podatke v bazi ce so vsi vnosi ustrezni
+            if(nameLength && surnameLength && emailLength && usernameLength && phoneNumLength)
+                submitData(name, surname, email, username, phoneNum, exceptionInfo);
+
+        } catch (InputTooShortException e){
+            exceptionInfo.setText(e.getMessage());
+        }
+    }
+
+    public void submitData(String name, String surname, String email, String username, String phoneNum, TextView exceptionInfo){
         //posodabljanje osnovnih podatkov o uporabniku
         try {
+            //vzpostavitev povezave na bazo
             Connection con = DBConnection.getConnection();
             String query = "";
             PreparedStatement pstmt;
 
-            //posodobi ime
+            //posodobi ime, če je vnešena druga vrednost
             if(!User.name.equals(name)){
                 query = "update apl_user \n" +
                         "set name = '" + name + "'\n" +
                         "where id = " + User.id;
                 pstmt = con.prepareStatement(query);
+                pstmt.executeUpdate();
                 pstmt.close();
                 User.name = name;
             }
 
-            //posodobi priimek
+            //posodobi priimek, če je vnešena druga vrednost
             if(!User.surname.equals(surname)){
                 query = "update apl_user \n" +
                         "set surname = '" + surname + "'\n" +
                         "where id = " + User.id;
                 pstmt = con.prepareStatement(query);
+                pstmt.executeUpdate();
                 pstmt.close();
                 User.surname = surname;
             }
 
-            //posodobi gmail
+            //posodobi gmail, če je vnešena druga vrednost
             if(!User.gmail.equals(email)){
                 query = "update apl_user \n" +
                         "set gmail = '" + email + "'\n" +
                         "where id = " + User.id;
                 pstmt = con.prepareStatement(query);
+                pstmt.executeUpdate();
                 pstmt.close();
                 User.gmail = email;
             }
 
-            //posodobi uporabniško ime
+            //posodobi uporabniško ime, če je vnešena druga vrednost
             if(!User.username.equals(username)){
                 if(checkUsername(username, exceptionInfo)){
                     query = "update apl_user \n" +
                             "set username = '" + username + "'\n" +
-                            "where id " + User.id;
+                            "where id =" + User.id;
                     pstmt = con.prepareStatement(query);
+                    pstmt.executeUpdate();
                     pstmt.close();
                     User.username = username;
                 }
             }
 
-            //posodobi telefonsko številko
+            //posodobi telefonsko številko, če je vnešena druga vrednost
             if(!User.phoneNumber.equals(phoneNum)){
                 query = "update apl_user \n" +
                         "set phoneNumber = '" + phoneNum + "'\n" +
-                        "where id " + User.id;
+                        "where id =" + User.id;
                 pstmt = con.prepareStatement(query);
+                pstmt.executeUpdate();
                 pstmt.close();
                 User.phoneNumber = phoneNum;
             }
@@ -153,8 +206,6 @@ public class SettingsChangeData extends AppCompatActivity {
             Log.e("error", e.toString());
             unsuccessUpdate(e.getMessage());
         }
-
-
     }
 
     public boolean checkUsername(String username, TextView exceptionInfo){
@@ -207,7 +258,7 @@ public class SettingsChangeData extends AppCompatActivity {
     public void unsuccessUpdate(String message){
         //sporocilo da je bila posodobitev podatkov neuspešna
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Posodobitev podatkov neuspešna!\n Razlog: " + message);
+        builder1.setMessage("Posodobitev podatkov neuspešna!\nRazlog: " + message);
 
         builder1.setPositiveButton(
                 "Poizkusite ponovno",

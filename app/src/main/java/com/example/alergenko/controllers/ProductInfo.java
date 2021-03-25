@@ -126,7 +126,6 @@ public class ProductInfo extends AppCompatActivity {
     }
 
     public void openMainActivity(){
-        startActivity(new Intent(this, MainActivity.class
-        ));
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

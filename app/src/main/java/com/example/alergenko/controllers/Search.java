@@ -68,11 +68,7 @@ public class Search extends Fragment implements View.OnClickListener{
 
 
     private CompoundBarcodeView barcodeView;
-    /*
-    ListView lv;
-    ArrayList<Product> arr;
-    ProductListAdapter<Product> adapter;
-     */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,21 +77,11 @@ public class Search extends Fragment implements View.OnClickListener{
             return null;
         }
 
-        View v;
-        v = inflater.inflate(R.layout.search, container, false);
+        View v = inflater.inflate(R.layout.search, container, false);
 
         barcodeView = (CompoundBarcodeView) v.findViewById(R.id.barcode_scanner);
         barcodeView.setStatusText("Postavite črtno kodo v okvir, da jo skenirate.");
         barcodeView.decodeContinuous(callback);
-
-
-        /*
-        lv = v.findViewById(R.id.scanned_item);
-        arr = new ArrayList<Product>();
-        arr.add(new Product(1, "neki", "neki"));
-        adapter = new ProductListAdapter<Product>(getActivity(), R.layout.scanned_item, arr);
-        lv.setAdapter(adapter);
-         */
 
         return v;
     }

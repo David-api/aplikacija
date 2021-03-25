@@ -7,8 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.alergenko.R;
+import com.example.alergenko.entities.Product;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,11 +61,27 @@ public class History extends Fragment {
         }
     }
 
+    ListView lv;
+    ArrayList<Product> arr;
+    ProductListAdapter<Product> adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.history, container, false);
+        View v = inflater.inflate(R.layout.history, container, false);
+
+        lv = v.findViewById(R.id.scanned_items);
+        arr = new ArrayList<Product>();
+        arr.add(new Product(1, "neki", "neki"));
+        arr.add(new Product(2, "neki1", "neki1"));
+        arr.add(new Product(3, "neki2", "neki2"));
+        arr.add(new Product(4, "neki3", "neki3"));
+        arr.add(new Product(5, "neki4", "neki4"));
+        adapter = new ProductListAdapter<Product>(getActivity(), R.layout.scanned_item, arr);
+        lv.setAdapter(adapter);
+
+        return v;
     }
 
 

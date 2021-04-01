@@ -18,6 +18,7 @@ public class User {
     public static String phoneNumber;
     public static String password;
     public static ArrayList<Allergens> allergens = new ArrayList<Allergens>();
+    public static ArrayList<Product> history = new ArrayList<Product>();
 
     public static int getUserId(String username){
         int id = 0;

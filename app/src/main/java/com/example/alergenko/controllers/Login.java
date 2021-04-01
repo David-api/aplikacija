@@ -14,6 +14,7 @@ import com.example.alergenko.R;
 
 import com.example.alergenko.connection.DBConnection;
 import com.example.alergenko.entities.Allergens;
+import com.example.alergenko.entities.Product;
 import com.example.alergenko.exceptions.EmptyInputException;
 import com.example.alergenko.exceptions.WrongUsernameOrPasswordException;
 import com.example.alergenko.entities.User;
@@ -22,6 +23,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class Login extends AppCompatActivity {
@@ -114,6 +116,7 @@ public class Login extends AppCompatActivity {
             con.close();
             stmt.close();
             rs.close();
+
         }  catch (SQLException e){
             Log.e("error", e.toString());
             exceptionInfo.setText("Napaka pri pridobivanju podatkov iz podatkovne baze!");
@@ -122,6 +125,8 @@ public class Login extends AppCompatActivity {
             exceptionInfo.setText(e.getMessage());
         }
 
+        //pridobivanje podatkov o zgodovini skeniranih izdelkov
+        User.history.addAll(getUserHistory(User.id));
     }
 
     public void checkLogin(String usernameIn, String usernameDB, String passwordIn, String passwordDB, TextView exceptionInfo){
@@ -135,6 +140,92 @@ public class Login extends AppCompatActivity {
             exceptionInfo.setText(e.getMessage());
         }
     }
+
+    public ArrayList<Product> getUserHistory(int id){
+        ArrayList<Product> prdct = new ArrayList<Product>();
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement stmt = con.createStatement();
+
+            //iskanje izdelkov, ki jih je uporabnik skeniral
+            String query = "select * from apl_history\n" +
+                    "where user_id = " + id + "\n" +
+                    "order by scandate desc";
+            ResultSet rs = stmt.executeQuery(query);
+
+            //shranjevanje podatkov iz baze v spremenljivke
+            while (rs.next()) {
+                ids.add(rs.getInt("product_id"));
+            }
+
+            con.close();
+            stmt.close();
+            rs.close();
+        }  catch (SQLException e){
+            Log.e("ProductInfo SQLException", e.toString());
+            return prdct;
+        } catch (Exception e){
+            Log.e("ProductInfo Exception", e.toString());
+            return prdct;
+        }
+
+
+        for(int i = 0; i < ids.size(); i++){
+            prdct.add(getProduct(ids.get(i)));
+        }
+
+        return prdct;
+    }
+
+    public Product getProduct(int id){
+        String brandName = "";
+        String name = "";
+        String allergen = "";
+        ArrayList<Allergens> allergens = new ArrayList<Allergens>();
+        byte [] picture = null;
+
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement stmt = con.createStatement();
+
+            //iskanje izdelka, alergenov in slike po id izdelka
+            String query = "select br.name as znamka, p.name as izdelek, p.picture, a.name as alergen\n" +
+                    "from apl_allergen a\n" +
+                    "    right join  apl_alr_prdct ap\n" +
+                    "        on a.id = ap.allergen_id\n" +
+                    "    right join  apl_product p\n" +
+                    "        on p.id = ap.product_id\n" +
+                    "    right join apl_barcode b\n" +
+                    "        on p.id = b.product_id\n" +
+                    "    right join apl_brand br\n" +
+                    "        on p.brand_id = br.id\n" +
+                    "where p.id = " + id + " and rownum = 1";
+            ResultSet rs = stmt.executeQuery(query);
+
+            //shranjevanje podatkov iz baze v spremenljivke
+            while (rs.next()) {
+                brandName = (rs.getString("znamka") == null) ? "" : rs.getString("znamka");
+                name = (rs.getString("izdelek")  == null) ? "" : rs.getString("izdelek");
+                picture = (rs.getBytes("picture") == null) ? new byte[]{} : rs.getBytes("picture");
+                allergen = (rs.getString("alergen") == null) ? "null" : rs.getString("alergen");
+                allergens.add(Allergens.valueOf(allergen.toUpperCase().replace(' ', '_').trim()));
+            }
+
+            con.close();
+            stmt.close();
+            rs.close();
+        }  catch (SQLException e){
+            Log.e("ProductInfo SQLException", e.toString());
+            return null;
+        } catch (Exception e){
+            Log.e("ProductInfo Exception", e.toString());
+            return null;
+        }
+
+        return new Product(id, brandName, name, allergens, picture);
+    }
+
 
 
     //odpre 1. okno za registracijo

@@ -14,11 +14,12 @@ public enum Allergens {
     SEZAM(80, "sezam"),
     ZVEPLO(81, "žveplo (SO2)"),
     VOLCJI_BOB(82, "volčji bob"),
-    MEHKUZCI(83, "mehkužci");
+    MEHKUZCI(83, "mehkužci"),
+    NULL(84, "ne vsebuje alergenov");
 
 
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     private Allergens(int id, String name) {
         this.id = id;

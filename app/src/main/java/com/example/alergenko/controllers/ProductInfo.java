@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,14 +46,14 @@ public class ProductInfo extends AppCompatActivity {
 
         String productName = "";
         String allergens = "";
-        String picture = "";
+        byte [] picture = null;
 
         try {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
 
             //iskanje izdelka, alergenov in slike po barkodah
-            String query = "select b.barcode, br.name as znamka, p.name as izdelek, p.pictureUrl as url, a.name as alergen\n" +
+            String query = "select b.barcode, br.name as znamka, p.name as izdelek, p.picture, a.name as alergen\n" +
                     "from apl_allergen a\n" +
                     "    right join  apl_alr_prdct ap\n" +
                     "        on a.id = ap.allergen_id\n" +
@@ -65,11 +66,10 @@ public class ProductInfo extends AppCompatActivity {
                     "where b.barcode = '" + barcode + "'";
             ResultSet rs = stmt.executeQuery(query);
 
-            //TODO: dodaj da pobere sliko iz baze in ne iz interneta
             //shranjevanje podatkov iz baze v spremenljivke
             while (rs.next()) {
                 productName = rs.getString("izdelek");
-                picture = rs.getString("url");
+                picture = rs.getBytes("picture");
 
                 //ce izdelek ne vsebuje alergenov izpise "Izdelek ne vsebuje alergenov."
                 if (rs.getString("alergen") == null)
@@ -93,7 +93,7 @@ public class ProductInfo extends AppCompatActivity {
         //prikaz podatkov v aplikaciji
         txtvAllergenes.setText(allergens.substring(0, allergens.length() - 2));
         txtvProductName.setText(productName);
-        imgvProductImage.setImageBitmap(getBitmapFromURL(picture));
+        imgvProductImage.setImageBitmap(getBitmapFromBLOB(picture));
 
         //odpre glavno aktivnost ob kliku an gumb
         Button btnClose = findViewById(R.id.btnClose);
@@ -106,23 +106,12 @@ public class ProductInfo extends AppCompatActivity {
         btnClose.setOnClickListener(listenerClose);
     }
 
-    //pridobi sliko iz interneta
-    public Bitmap getBitmapFromURL(String src) {
-        try {
-            Log.e("src",src);
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            Log.e("Bitmap","returned");
-            return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e("Exception",e.toString());
-            return null;
+    //pridobi sliko iz baze
+    public Bitmap getBitmapFromBLOB(byte[] bytes) {
+        if (bytes != null) {
+            return BitmapFactory.decodeByteArray(bytes, 0 ,bytes.length);
         }
+        return null;
     }
 
     public void openMainActivity(){

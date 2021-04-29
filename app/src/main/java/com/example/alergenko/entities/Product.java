@@ -6,17 +6,23 @@ import java.util.ArrayList;
 
 public class Product {
     private int id;
+    private String barcode;
     private String brandName;
     private String name;
+    private String shortName;
     private ArrayList<Allergens> allergens;
     private byte [] picture;
+    private String ingredients;
 
-    public Product(int id, String brandName, String name, ArrayList<Allergens> allergens, byte[] picture) {
+    public Product(int id, String barcode, String brandName, String name, String shortName, ArrayList<Allergens> allergens, byte[] picture, String ingredients) {
         this.id = id;
+        this.barcode = barcode;
         this.brandName = brandName;
         this.name = name;
+        this.shortName = shortName;
         this.allergens = allergens;
         this.picture = picture;
+        this.ingredients = ingredients;
     }
 
     public int getId() {
@@ -25,6 +31,14 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
     public String getBrandName() {
@@ -43,6 +57,14 @@ public class Product {
         this.name = name;
     }
 
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
     public ArrayList<Allergens> getAllergens() {
         return allergens;
     }
@@ -58,4 +80,13 @@ public class Product {
     public void setPicture(byte[] picture) {
         this.picture = picture;
     }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
 }
+

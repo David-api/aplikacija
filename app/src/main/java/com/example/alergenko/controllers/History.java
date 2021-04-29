@@ -1,13 +1,18 @@
 package com.example.alergenko.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.alergenko.R;
@@ -80,11 +85,20 @@ public class History extends Fragment {
         View v = inflater.inflate(R.layout.history, container, false);
         lv = v.findViewById(R.id.scanned_items);
 
-        Log.e("all", User.history.toString());
+        //postavitev vseh izdelkov na seznam s postavitvijo po meri
         adapter = new ProductListAdapter<Product>(getActivity(), R.layout.scanned_item, User.history);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
+                Intent i = new Intent(getActivity(), ProductInfo.class);
+                i.putExtra("PRODUCT_POS", position);
+                startActivity(i);
+            }
+        });
 
         return v;
     }
+
 
 }

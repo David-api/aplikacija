@@ -98,7 +98,6 @@ public class Register2 extends AppCompatActivity {
 
             con.close();
             pstmt.close();
-
             successRegister();
         } catch (SQLException e){
             System.out.println("Napaka v Register2 razredu, v metodi register2");
@@ -112,10 +111,10 @@ public class Register2 extends AppCompatActivity {
     }
 
     public void successRegister(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Registracija uspešna, vrnite se na prijavno okno!");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Registracija uspešna, vrnite se na prijavno okno!");
 
-        builder1.setPositiveButton(
+        builder.setPositiveButton(
                 "Prijavno okno",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -124,15 +123,15 @@ public class Register2 extends AppCompatActivity {
                     }
                 });
 
-        AlertDialog alert11 = builder1.create();
+        AlertDialog alert11 = builder.create();
         alert11.show();
     }
 
     public void unsuccessRegister(String message){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Registracija neuspešna!\nRazlog: " + message);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Registracija neuspešna!\nRazlog: " + message);
 
-        builder1.setPositiveButton(
+        builder.setPositiveButton(
                 "Poizkusite ponovno",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -141,7 +140,7 @@ public class Register2 extends AppCompatActivity {
                     }
                 });
 
-        AlertDialog alert11 = builder1.create();
+        AlertDialog alert11 = builder.create();
         alert11.show();
     }
 }

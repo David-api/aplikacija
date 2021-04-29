@@ -24,6 +24,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 
 public class Login extends AppCompatActivity {
@@ -33,17 +37,18 @@ public class Login extends AppCompatActivity {
 
         //ob kliku na gumb se izvede prijava
         Button btnLogIn = findViewById(R.id.btnLogIn);
-        View.OnClickListener listenerLogin = new View.OnClickListener() {
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 login();
             }
-        };
-        btnLogIn.setOnClickListener(listenerLogin);
-
+        });
     }
 
     public void login(){
+        //ponastavi vse podatke o uporabniku
+        reserUser();
+
         //inicializacija in deklaracija vsega potrebnega
         TextView exceptionInfo = (TextView)findViewById(R.id.txtInfo);
         EditText txtInUsername= (EditText)findViewById(R.id.txtInUsername);
@@ -68,7 +73,6 @@ public class Login extends AppCompatActivity {
 
             //metoda za preverjane vnesenih podatkov
             checkLogin(usernameIn, User.username, passwordIn, User.password, exceptionInfo);
-
 
         } catch (EmptyInputException e){  //ravnanje z izjemami pri vnosu
             exceptionInfo.setText(e.getMessage());
@@ -141,9 +145,11 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    //pridobi podatke o skeniranih izdelkih uporabnika, ki se želi prijaviti
     public ArrayList<Product> getUserHistory(int id){
         ArrayList<Product> prdct = new ArrayList<Product>();
         ArrayList<Integer> ids = new ArrayList<Integer>();
+
         try {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
@@ -170,7 +176,6 @@ public class Login extends AppCompatActivity {
             return prdct;
         }
 
-
         for(int i = 0; i < ids.size(); i++){
             prdct.add(getProduct(ids.get(i)));
         }
@@ -181,35 +186,45 @@ public class Login extends AppCompatActivity {
     public Product getProduct(int id){
         String brandName = "";
         String name = "";
+        String shortName = "";
+        String barcode = "";
         String allergen = "";
-        ArrayList<Allergens> allergens = new ArrayList<Allergens>();
+        ArrayList<Allergens> allergensTemp = new ArrayList<Allergens>();
         byte [] picture = null;
+        String ingredinets = "";
 
         try {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
 
-            //iskanje izdelka, alergenov in slike po id izdelka
-            String query = "select br.name as znamka, p.name as izdelek, p.picture, a.name as alergen\n" +
-                    "from apl_allergen a\n" +
-                    "    right join  apl_alr_prdct ap\n" +
-                    "        on a.id = ap.allergen_id\n" +
-                    "    right join  apl_product p\n" +
-                    "        on p.id = ap.product_id\n" +
-                    "    right join apl_barcode b\n" +
-                    "        on p.id = b.product_id\n" +
-                    "    right join apl_brand br\n" +
-                    "        on p.brand_id = br.id\n" +
-                    "where p.id = " + id + " and rownum = 1";
+            //iskanje potrebnih podatkov o izdelku po id izdelka
+            String query = "select br.name as znamka, b.barcode, p.name as izdelek, p.shortName, p.picture, a.name as alergen, ai.name as sestavine\n" +
+                    "    from apl_allergen a\n" +
+                    "        right join  apl_alr_prdct ap\n" +
+                    "            on a.id = ap.allergen_id\n" +
+                    "        right join  apl_product p\n" +
+                    "            on p.id = ap.product_id\n" +
+                    "        right join apl_barcode b\n" +
+                    "            on p.id = b.product_id\n" +
+                    "        right join apl_brand br\n" +
+                    "            on p.brand_id = br.id\n" +
+                    "        left join apl_ing_prdct aip\n" +
+                    "            on aip.product_id = p.id\n" +
+                    "        left join apl_ingredient ai\n" +
+                    "            on ai.id = aip.ingredient_id\n" +
+                    "        where p.id = " + id;
             ResultSet rs = stmt.executeQuery(query);
 
             //shranjevanje podatkov iz baze v spremenljivke
             while (rs.next()) {
                 brandName = (rs.getString("znamka") == null) ? "" : rs.getString("znamka");
+                barcode = (rs.getString("barcode") == null) ? "" : rs.getString("barcode");
                 name = (rs.getString("izdelek")  == null) ? "" : rs.getString("izdelek");
+                shortName = (rs.getString("shortName")  == null) ? "" : rs.getString("shortName");
                 picture = (rs.getBytes("picture") == null) ? new byte[]{} : rs.getBytes("picture");
+                ingredinets = (rs.getString("sestavine")  == null) ? "Ni podatka o sestavinah" : rs.getString("sestavine");
                 allergen = (rs.getString("alergen") == null) ? "null" : rs.getString("alergen");
-                allergens.add(Allergens.valueOf(allergen.toUpperCase().replace(' ', '_').trim()));
+                allergensTemp.add(Allergens.valueOf(allergen.toUpperCase().replace(' ', '_').trim()));
             }
 
             con.close();
@@ -223,9 +238,24 @@ public class Login extends AppCompatActivity {
             return null;
         }
 
-        return new Product(id, brandName, name, allergens, picture);
+        //odstrani podvojene alergene
+        ArrayList<Allergens> allergens = new ArrayList<Allergens>(new TreeSet<Allergens>(allergensTemp));
+
+        return new Product(id, barcode, brandName, name, shortName, allergens, picture, ingredinets);
     }
 
+    //spremeni vse podatke o uporabniku na default
+    public void reserUser(){
+        User.id = 0;
+        User.name = "";
+        User.surname = "";
+        User.gmail = "";
+        User.username = "";
+        User.username = "";
+        User.password = "";
+        User.allergens.clear();
+        User.history.clear();
+    }
 
 
     //odpre 1. okno za registracijo

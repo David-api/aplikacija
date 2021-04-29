@@ -9,13 +9,22 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/white"
-        android:orientation="horizontal">
+        android:minHeight="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgVImage"
             android:layout_width="60dp"
             android:layout_height="100dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             app:srcCompat="@android:drawable/ic_menu_gallery" />
 
@@ -40,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="MLEKO, SOJA, JAJCA, OREŠČKI, GLUTEN"
                 android:textColor="@color/red"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtVVerdict"
@@ -49,19 +57,8 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/primaryGreen"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtVClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="X"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
 
     </TableRow>
 

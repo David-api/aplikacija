@@ -99,7 +99,6 @@ public class Search extends Fragment implements View.OnClickListener{
             }
         }
 
-
         @Override
         public void possibleResultPoints(List<ResultPoint> resultPoints) {}
     };

@@ -5,16 +5,14 @@
 
     <!--Dovoljenja, ki jih aplikacija potrebuje za delovanje-->
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:largeHeap="true"
+        android:icon="@drawable/ic_icon_alergenko"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
         <!--Activity ki se zažene ob zagonu-->
@@ -33,7 +31,6 @@
         <activity android:name=".controllers.SettingsData" ></activity>
         <activity android:name=".controllers.SettingsChangeData" ></activity>
         <activity android:name=".controllers.ProductInfo" ></activity>
-
 
         <!--Importan activity za skeniranje črtnih kod-->
         <activity

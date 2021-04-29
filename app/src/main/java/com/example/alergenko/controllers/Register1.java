@@ -33,8 +33,6 @@ public class Register1 extends AppCompatActivity {
     }
 
     public void register1(View v){
-        //TODO: dodaj da preveri dolžino podatkov
-
         //pridobivanje podatkov iz vnosnih polj
         TextView txtInName = findViewById(R.id.txtInName);
         TextView txtInSurname = findViewById(R.id.txtInSurname);

@@ -6,7 +6,7 @@ public enum Allergens {
     GLUTEN(72, "gluten"),
     MLEKO(73, "mleko"),
     SOJA(74, "soja"),
-    ARASIDI(75, "arasidi"),
+    ARASIDI(75, "arašidi"),
     ZELENE(76, "zelena"),
     RIBE(77, "ribe"),
     RAKI(78, "raki"),

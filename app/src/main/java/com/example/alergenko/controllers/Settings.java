@@ -69,7 +69,7 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment (kreiranje pogleda)
         View v = inflater.inflate(R.layout.settings, container, false);
 
-        //dodajanje poslušalcev ob kliku na vhode / gumbe
+        // ob kliku na text se odpre okno s podatki o uporabniku
         TextView settingsData = v.findViewById(R.id.txtData);
         View.OnClickListener listenerData = new View.OnClickListener() {
             @Override
@@ -79,6 +79,7 @@ public class Settings extends Fragment {
         };
         settingsData.setOnClickListener(listenerData);
 
+        // ob kliku na text se odpre okno s podatki o alergenih
         TextView settingsAllergens = v.findViewById(R.id.txtAllergenes);
         View.OnClickListener listenerAllergens = new View.OnClickListener() {
             @Override

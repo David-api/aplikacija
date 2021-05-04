@@ -31,6 +31,7 @@
         <activity android:name=".controllers.SettingsData" ></activity>
         <activity android:name=".controllers.SettingsChangeData" ></activity>
         <activity android:name=".controllers.ProductInfo" ></activity>
+        <activity android:name=".controllers.ProductInfo1" ></activity>
 
         <!--Importan activity za skeniranje črtnih kod-->
         <activity

@@ -45,18 +45,12 @@ public class ProductInfo extends AppCompatActivity {
 
         // pridobi crno kodo iz intenta
         String barcode = getBarcodeFromIntent();
-        // pridobi pozicijo izdelka iz intenta
-        String productPos = getProductPosFromIntent();
-        Product scanedProduct;
+        // pridobipodatke o izdečku na podlagi crtne kode
+        Product scanedProduct = getProduct(barcode, txtvAllergenes);
+        // doda skeniran izdelek k zgodovini
+        User.history.add(0, scanedProduct);
+        addProductToHistory(scanedProduct);
 
-        //preveri ali gre za novo skeniran izdelek ali za izdelek iz zgodovine
-        if(barcode != null){
-            scanedProduct = getProduct(barcode, txtvAllergenes);
-            User.history.add(0, scanedProduct);
-            addProductToHistory(scanedProduct);
-        } else {
-            scanedProduct = User.history.get(Integer.parseInt(productPos));
-        }
 
         //prikaz podatkov o izdelku
         txtvAllergenes.setText(formatAllergens(scanedProduct));
@@ -126,7 +120,7 @@ public class ProductInfo extends AppCompatActivity {
             Statement stmt = con.createStatement();
 
             //iskanje podatkov o izdelku po crtni kodi
-            String query = "select b.barcode, p.id, br.name as znamka, p.name as izdelek, p.picture, a.name as alergen, ai.name as sestavine\n" +
+            String query = "select b.barcode, p.id, br.name as znamka, p.name as izdelek, p.shortName, p.picture, a.name as alergen, ai.name as sestavine\n" +
                     "from apl_allergen a\n" +
                     "    right join  apl_alr_prdct ap\n" +
                     "        on a.id = ap.allergen_id\n" +
@@ -138,7 +132,8 @@ public class ProductInfo extends AppCompatActivity {
                     "        on p.brand_id = br.id\n" +
                     "    left join apl_ing_prdct aip\n" +
                     "        on aip.product_id = p.id\n" +
-                    "    left join apl_ingredient ai" +
+                    "    left join apl_ingredient ai\n" +
+                    "        on aip.ingredient_id = ai.id\n" +
                     "where b.barcode = '" + barcode + "'";
             ResultSet rs = stmt.executeQuery(query);
 
@@ -186,18 +181,6 @@ public class ProductInfo extends AppCompatActivity {
             barcode =(String) b.get("BARCODE");
 
         return barcode;
-    }
-
-    public String getProductPosFromIntent(){
-        //pridobi črtno kodo iz intenta
-        Intent i= getIntent();
-        Bundle b = i.getExtras();
-        String position = "";
-
-        if(b!=null)
-            position = "" + b.get("PRODUCT_POS");
-
-        return position;
     }
 
     public void openMainActivity(){

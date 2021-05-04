@@ -88,10 +88,11 @@ public class History extends Fragment {
         //postavitev vseh izdelkov na seznam s postavitvijo po meri
         adapter = new ProductListAdapter<Product>(getActivity(), R.layout.scanned_item, User.history);
         lv.setAdapter(adapter);
+        // ob kliku na katereikoli izdelek iz zgodovine se prikazejo informacij o tem izdelku
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
-                Intent i = new Intent(getActivity(), ProductInfo.class);
+                Intent i = new Intent(getActivity(), ProductInfo1.class);
                 i.putExtra("PRODUCT_POS", position);
                 startActivity(i);
             }

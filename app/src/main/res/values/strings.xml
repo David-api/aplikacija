@@ -61,4 +61,17 @@
 
     <string name="settings_change_data_potrdi">Potrdi</string>
 
+    <string name="reset_password_naslov">Sprememba gesla</string>
+    <string name="reset_password_tel">Telefonska številka</string>
+    <string name="reset_password_koda">Koda</string>
+    <string name="reset_password_poslji">Pošlji</string>
+    <string name="reset_password_potrdi">Potrdi</string>
+    <string name="reset_password_spremeni">Spremeni</string>
+    <string name="reset_password_nazaj">Nazaj</string>
+    <string name="reset_password_geslo">Novo geslo</string>
+    <string name="reset_password_ponovno_geslo">Ponovno geslo</string>
+    <string name="reset_password_navodila">1. Vnesite vašo telefonsko številko in kliknite POŠLJI</string>
+    <string name="reset_password_navodila2">2. Prejeli boste SMS s kodo in jo vpišite v polje s kodo</string>
+    <string name="reset_password_navodila3">3. Vpišite in potrdite novo geslo</string>
+
 </resources>

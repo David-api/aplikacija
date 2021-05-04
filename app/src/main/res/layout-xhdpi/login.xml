@@ -156,21 +156,13 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center">
-
-            <CheckBox
-                android:id="@+id/cbxStayLogIn"
-                android:layout_width="198dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:text="@string/login_zapomni" />
-        </TableRow>
+            android:layout_gravity="center"/>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="40dp">
 
             <Button
                 android:id="@+id/btnLogIn"

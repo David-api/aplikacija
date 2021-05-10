@@ -46,10 +46,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtException"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:gravity="bottom|left"
+                    android:textColor="@color/red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -128,7 +132,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/buttom_white"
-                    android:text="@string/reset_password_nazaj"
+                    android:text="@string/reset_password_preklici"
                     android:textColor="@color/primaryGreen" />
 
                 <Button

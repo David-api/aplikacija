@@ -68,6 +68,7 @@
     <string name="reset_password_potrdi">Potrdi</string>
     <string name="reset_password_spremeni">Spremeni</string>
     <string name="reset_password_nazaj">Nazaj</string>
+    <string name="reset_password_preklici">Prekliči</string>
     <string name="reset_password_geslo">Novo geslo</string>
     <string name="reset_password_ponovno_geslo">Ponovno geslo</string>
     <string name="reset_password_navodila">1. Vnesite vašo telefonsko številko in kliknite POŠLJI</string>

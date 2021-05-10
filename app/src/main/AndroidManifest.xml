@@ -6,6 +6,7 @@
     <!--Dovoljenja, ki jih aplikacija potrebuje za delovanje-->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
 
     <application
@@ -32,12 +33,17 @@
         <activity android:name=".controllers.SettingsChangeData" ></activity>
         <activity android:name=".controllers.ProductInfo" ></activity>
         <activity android:name=".controllers.ProductInfo1" ></activity>
+        <activity android:name=".controllers.ResetPassword" ></activity>
+        <activity android:name=".controllers.ResetPassword1" ></activity>
+        <activity android:name=".controllers.ResetPassword2" ></activity>
+
 
         <!--Importan activity za skeniranje črtnih kod-->
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
+        <!--Importana pisava po meri-->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -35,12 +35,21 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //ob kliku na gumb se izvede prijava
+        //ob kliku na gumb prijava se izvede prijava
         Button btnLogIn = findViewById(R.id.btnLogIn);
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 login();
+            }
+        });
+
+        // ob kliku na text "ste pozabili geslo" se odpre postopek za spreminjanje gesla
+        TextView txtForgottPsswd = (TextView) findViewById(R.id.txtForgottPsswd);
+        txtForgottPsswd.setOnClickListener(new TextView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                openResetPsswdActivity();
             }
         });
     }
@@ -261,5 +270,10 @@ public class Login extends AppCompatActivity {
     //odpre 1. okno za registracijo
     public void openRegister1Activity(View v){
         startActivity(new Intent(Login.this, Register1.class));
+    }
+
+    //odpre okno za resrtiranje gesla
+    public void openResetPsswdActivity(){
+        startActivity(new Intent(Login.this, ResetPassword.class));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.alergenko.controllers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.alergenko.R;
@@ -59,8 +61,8 @@ public class ResetPassword2 extends AppCompatActivity {
                             if (editTextTextPassword.getText().toString().equals(editTextTextPassword2.getText().toString())) {
                                 // spremeni geslo
                                 changePassword(editTextTextPassword.getText().toString(), User.phoneNumber);
-                                // odpre prijano okno
-                                openLogInActivity();
+                                // uporabnika obvesit, da je bila spremeba gesla uspešna in odpre prijano okno
+                                successUpdate();
                             } else { // ce ne pa obvesti uporabnika o izjemi
                                 throw new PasswordsAreNotEqualException("Gesli se ne ujemata!");
                             }
@@ -98,11 +100,51 @@ public class ResetPassword2 extends AppCompatActivity {
             pstmt.close();
         } catch (SQLException e){
             txtException.setText("Napaka: " + e.getMessage());
+            unsuccessUpdate(e.getMessage());
             Log.e("ERROR", e.toString());
         }catch (Exception e){
             txtException.setText("Napaka: " + e.getMessage());
+            unsuccessUpdate(e.getMessage());
             Log.e("ERROR", e.toString());
         }
+    }
+
+    public void successUpdate(){
+        // sporocilo da je bila posodobitev gesla uspešna
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Geslo uspešno spremenjeno!");
+
+        // odpre prijavno okno
+        builder1.setPositiveButton(
+                "Vredu",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(ResetPassword2.this, Login.class));
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
+    public void unsuccessUpdate(String message){
+        // sporocilo da je bila spremeba gesla neuspešna neuspešna
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Sprememba gesla neuspešna!\nRazlog: " + message);
+
+        // odpre prvi korak za spremembo gesla
+        builder1.setPositiveButton(
+                "Poizkusite ponovno",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(ResetPassword2.this, ResetPassword.class));
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     public void openLogInActivity(){
